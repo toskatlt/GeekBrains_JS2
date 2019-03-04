@@ -29,12 +29,11 @@ class ProductsList {
 			const div = document.querySelector('.calcSum');
 			let sum = 0;
 			for (let product of this.goods) {
-				sum = sum + product.price;
+				sum += product.price;
 				console.log(sum);
 			}
 			div.textContent = 'Сумма товара: $' + sum;
 	}
-
 }
 
 class ProductItem {
@@ -55,10 +54,57 @@ class ProductItem {
 	}
 }
 
+class Cart {
+	constructor(container = '.basket') {
+		this.container = container;
+		this.cart = [];
+		this.allProductsCart = [];
+		this._fetchCart();
+	}
+	_fetchCart() {
+		this.goods = [
+			{id:'1', productName:'Mango футболка', price:52, qty:1},
+			{id:'2', productName:'D&G блузка', price:48, qty:3},
+			{id:'3', productName:'Mango куртка', price:49, qty:2},
+		];
+	}
+	render() {
+		const cartBlock = document.querySelector(this.container);
+		for (let cartProduct of this.goods) {
+			const ProductOdj = new CartItem(cartProduct);
+			this.allProductsCart.push(ProductOdj);
+			cartBlock.insertAdjacentHTML('beforeend', ProductOdj.render());
+		}
+	}
+}
+
+class CartItem {
+	constructor(product) {
+		this.productName = product.productName;
+		this.price = product.price;
+		this.id = product.id;
+		this.qty = product.qty;
+		this.sum = product.qty * product.price;
+	}
+	render() {
+		return `<div class="container" data-id="${this.id}">
+					<span class="productName">${this.productName}</span>
+					<span class="price pink">${this.price}</span>$ x
+					<span class="quantity">${this.qty}</span>
+					 [ сумма <span class="sum">${this.sum}</span>$ ]	
+					<button>x</button>
+				</div>`
+	}
+}
+
 
 let list = new ProductsList();
 list.render();
 list.calcSum();
+
+let cartList = new Cart();
+cartList.render();
+
 
 
 

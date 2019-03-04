@@ -1382,3 +1382,7 @@ to_cart-category-border:before {
 .increase:hover {
   background-size: 102%;
 }
+
+.basket {
+	margin-bottom: 50px;
+}

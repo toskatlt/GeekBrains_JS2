@@ -21,6 +21,7 @@
 	</header>
 	<main>
 		<div class="product container"></div>
+		<div class="basket container"></div>
 	</main>
 	<script src="js/main.js?ver=<?=$randval?>'"></script>
 </body>
