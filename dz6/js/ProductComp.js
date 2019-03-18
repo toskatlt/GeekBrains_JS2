@@ -6,11 +6,11 @@ Vue.component('products', {
 		}
 	},
 	methods: {
-		filterGoods() {
+		filterGoods(userSearch) {
 			let regexp = new RegExp(this.userSearch, 'i');
 			this.filtered = this.products.filterGoods(el => regexp.test(el.productName));
 		}
-	},
+	},	
 	mounted() {
 		this.$parent.getJson(`${API}/catalogData.json`)
 			.then(data => {
@@ -19,13 +19,6 @@ Vue.component('products', {
 					this.filtered.push(el);
 				}
 		});
-		this.$parent.getJson(`getProducts.json`)
-			.then(data => {
-				for(let el of data) {
-					this.products.push(el);
-					this.filtered.push(el);
-				}
-		})
 	},
 	template: `
 	<div class="product container">
@@ -42,7 +35,7 @@ Vue.component('product', {
 			<p class="item-name">{{ product.productName }}</p>
 			<p class="item-price pink">{{ product.price }}$</p>
 		</div>
-		<div class="add_cart"><a href="#" class="add" @click="$parent.$refs.cart.addProduct(product)">Add to Cart</a></div>
+		<div class="add_cart"><a href="#" class="add" @click="$parent.$parent.$refs.cart.addProduct(product)">Add to Cart</a></div>
 	</div>
 	`
 })

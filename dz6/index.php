@@ -13,12 +13,7 @@
 		<header class="header">
 			<div class="container header-flex">
 				<div class="header-left">
-					<form class="form" action="#" @submit.prevent="filterGoods">
-						<input class="search" type="text" v-model="userSearch" placeholder="введите товар">
-						<button type="submit" class="find">
-							<i class="fas fa-search"></i>
-						</button>
-					</form>
+					<filtered></filtered>
 				</div>
 				<div class="header-right">
 					<cart ref="cart"></cart>
@@ -32,6 +27,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="js/CartComp.js?ver=<?=$randval?>'"></script>
 	<script src="js/ProductComp.js?ver=<?=$randval?>'"></script>
+	<script src="js/FilteredComp.js".js?ver=<?=$randval?>'"></script>
 	<script src="js/main.js?ver=<?=$randval?>'"></script>	
 </body>
 </html>
