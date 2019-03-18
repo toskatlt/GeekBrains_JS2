@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+	 "productName": "Mango футболка",
+	 "price": 52 
+  },
+  {
+    "id": 3,
+	 "productName": "Mango куртка",
+	 "price": 49 
+  }
+]
